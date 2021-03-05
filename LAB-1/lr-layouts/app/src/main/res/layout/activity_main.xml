@@ -83,4 +83,11 @@
             android:text="Row 4">
         </TextView>
     </LinearLayout>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.1"
+        android:onClick="onClick"
+        android:text="Relative Layout">
+    </Button>
 </LinearLayout>
