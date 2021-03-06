@@ -2,6 +2,7 @@ package com.example.basic_calculator;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-    String operand1, operator, operand2;
+    String operator;
     EditText op1;
     EditText op2;
     @Override
@@ -38,11 +39,20 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         operator = parent.getItemAtPosition(position).toString();
-        Log.i("INFO", operator);
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
+    }
+
+    public void onClick(View view) {
+        int num1 = Integer.parseInt(op1.getText().toString());
+        int num2 = Integer.parseInt(op2.getText().toString());
+        Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+        intent.putExtra("num1", num1);
+        intent.putExtra("num2", num2);
+        intent.putExtra("operator", operator);
+        startActivity(intent);
     }
 }
